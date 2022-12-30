@@ -69,17 +69,6 @@ const Swiper = forwardRef(
       if (swiperParams.loop) {
         swiperRef.current.loopedSlides = calcLoopedSlides(slides, swiperParams);
       }
-      if (swiperRef.current.virtual && swiperRef.current.params.virtual.enabled) {
-        swiperRef.current.virtual.slides = slides;
-        const extendWith = {
-          cache: false,
-          slides,
-          renderExternal: setVirtualData,
-          renderExternalUpdate: false,
-        };
-        extend(swiperRef.current.params.virtual, extendWith);
-        extend(swiperRef.current.originalParams.virtual, extendWith);
-      }
     };
 
     if (!swiperElRef.current) {

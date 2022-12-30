@@ -16,6 +16,7 @@ function getParams(obj = {}, splitEvents = true) {
   const rest = {};
   const allowedParams = paramsList.map((key) => key.replace(/_/, ''));
   const plainObj = Object.assign({}, obj);
+  
   Object.keys(plainObj).forEach((key) => {
     if (typeof obj[key] === 'undefined') return;
     if (allowedParams.indexOf(key) >= 0) {
@@ -30,6 +31,7 @@ function getParams(obj = {}, splitEvents = true) {
       }
     } else if (key.search(/on[A-Z]/) === 0 && typeof obj[key] === 'function') {
       if (splitEvents) {
+
         events[`${key[2].toLowerCase()}${key.substr(3)}`] = obj[key];
       } else {
         params.on[`${key[2].toLowerCase()}${key.substr(3)}`] = obj[key];
